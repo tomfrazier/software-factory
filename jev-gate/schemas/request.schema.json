@@ -1,0 +1,123 @@
+{
+  "type": "object",
+  "properties": {
+    "model": {
+      "const": "jev-1.13.0"
+    },
+    "state": {
+      "type": "object"
+    },
+    "questions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "choice"
+              },
+              "instructions": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "criteria": {
+                "type": "object",
+                "minProperties": 1,
+                "maxProperties": 255,
+                "additionalProperties": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              }
+            },
+            "required": [
+              "type",
+              "instructions",
+              "criteria"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "noul"
+              },
+              "instructions": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "criteria": {
+                "type": "object",
+                "properties": {
+                  "true": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "false": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  }
+                },
+                "required": [
+                  "true",
+                  "false"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "type",
+              "instructions",
+              "criteria"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "score"
+              },
+              "instructions": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "criteria": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                },
+                "minItems": 2,
+                "maxItems": 10
+              }
+            },
+            "required": [
+              "type",
+              "instructions",
+              "criteria"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "model",
+    "state",
+    "questions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

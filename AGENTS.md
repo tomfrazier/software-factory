@@ -25,6 +25,40 @@ callouts; it also governs work in this repo itself.
    exceeds Greptile's file-count limit — until Greptile reports **5/5 with
    zero unresolved comments**. Finish by presenting the PR URL.
 
+## Structured judgment checkpoints
+
+When the project enables `/jev-gate`, add scoped audits at the boundaries below.
+Keep the four workflow beats and their existing requirements. Start in shadow
+mode; adopt enforcement only after the project calibrates the question set.
+
+| Boundary | Jev phase | Keep outside Jev |
+|---|---|---|
+| Scope check, before implementation | `intake` | Worktree creation, branch identity, exact overlap checks |
+| Shared-service extraction review | `architecture` | Type checks, dependency rules, auth enforcement |
+| Before running planned tests | `test-plan` | Test execution and measured coverage |
+| After collecting before/after proof | `evidence` | Actual media inspection and runtime verification |
+| Greptile finding/fix review | `review` | Reviewer identity, review freshness, thread resolution |
+| Before claiming completion | `ship` | CI results, Greptile gate, shipping authorization |
+| After editing human-facing text | `prose` | Writing and factual source verification |
+| Trust-boundary or irreversible changes | `risk` | Security controls and human authorization |
+
+Read [jev-gate/SKILL.md](jev-gate/SKILL.md) for manifest preparation and result
+handling. Send primary text excerpts, not the whole repo. In enforce mode, a
+missing, stale, uncertain, blocked, or unavailable judgment stops that checkpoint.
+A shadow or replay observation never counts as an enforced pass. Every enabled
+checkpoint must cover its reviewed inventory of applicable units; a favorable
+sample is not a whole-change judgment.
+
+The project must record the applicable stages, required deterministic checks,
+unit inventory, and adoption mode. This template does not silently enable external
+calls or install a hosted CI gate. The CLI uses Git revision bindings; Perforce
+keeps manual advisory use until a shelf-digest adapter exists.
+
+Jev supplements Greptile's 5/5 and zero-unresolved requirement. It cannot resolve
+threads, waive findings, pass failed tests, or authorize a push, publish, or merge.
+When the user requests local-only work, keep the implementation and evidence local
+and report that hosted review was not run.
+
 Ship-beat notes:
 
 - `/before-and-after` drives the `@vercel/before-and-after` CLI. `--markdown`
@@ -91,8 +125,8 @@ infrastructure (stubs, fixtures), and anything that can't be tested locally.
 
 | Skill | Source |
 |---|---|
-| `new-feature`, `code-structure`, `evidence-driven-testing` | this repo |
+| `new-feature`, `code-structure`, `evidence-driven-testing`, `jev-gate` | this repo |
 | `before-and-after` | this repo, vendored from [vercel-labs/before-and-after](https://github.com/vercel-labs/before-and-after) (or `npx skills add vercel-labs/before-and-after`) |
 | `greploop` | this repo, vendored from [greptileai/skills](https://github.com/greptileai/skills) |
 | `greploop-apps` | this repo (local variant of greploop for huge PRs; no separate upstream) |
-| `unslop` | this repo, vendored from [cursor/plugins (pstack)](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop); frontmatter edited so agents apply it unprompted (`disable-model-invocation` dropped, description scoped to text the agent writes or edits for people), body untouched |
+| `unslop` | this repo, vendored from [cursor/plugins (pstack)](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop); frontmatter edited so agents apply it unprompted (`disable-model-invocation` dropped, description scoped to text the agent writes or edits for people), original body retained with a local optional Jev fidelity-audit section |

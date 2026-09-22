@@ -122,3 +122,13 @@ If no `gh` CLI: output markdown and tell user to paste manually.
 | `could not determine executable` | Use `npx @vercel/before-and-after` (full name) |
 | 401/403 on .vercel.app | See Vercel protection section |
 | Element not found | Verify selector exists on page |
+
+## Optional Jev evidence audit
+
+Use an enabled [jev-gate](../jev-gate/SKILL.md) evidence audit after reviewing the
+actual pair and before presenting its claim. Give it text records of the scenario,
+viewport, preconditions, before/after observations, acceptance condition, and
+caveats. This can expose an unsupported caption or mismatched scenario. Jev cannot
+see the screenshots and does not select the before state or authorize uploads.
+Keep capture, protection checks, visual comparison, and publishing permissions in
+the existing workflow. Sensitive media still requires an appropriate destination.

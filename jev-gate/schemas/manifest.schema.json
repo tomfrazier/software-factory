@@ -1,0 +1,262 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "stage": {
+      "enum": [
+        "architecture",
+        "evidence",
+        "intake",
+        "prose",
+        "review",
+        "risk",
+        "ship",
+        "test-plan"
+      ]
+    },
+    "revision": {
+      "type": "object",
+      "properties": {
+        "head": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40,64}$"
+        },
+        "diff_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "head",
+        "diff_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "expected_units": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,79}$"
+      },
+      "minItems": 1,
+      "maxItems": 64,
+      "uniqueItems": true
+    },
+    "required_checks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,79}$"
+      },
+      "minItems": 1,
+      "maxItems": 50,
+      "uniqueItems": true
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,79}$"
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "failed",
+              "unknown"
+            ]
+          },
+          "revision": {
+            "type": "object",
+            "properties": {
+              "head": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40,64}$"
+              },
+              "diff_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "head",
+              "diff_sha256"
+            ],
+            "additionalProperties": false
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "start": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "role": {
+                "enum": [
+                  "after",
+                  "before",
+                  "claim",
+                  "finding",
+                  "history",
+                  "implementation",
+                  "ownership",
+                  "plan",
+                  "requirement",
+                  "result",
+                  "rule",
+                  "test"
+                ]
+              },
+              "kind": {
+                "enum": [
+                  "primary",
+                  "summary"
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "start",
+              "end",
+              "role",
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "revision",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 50
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,79}$"
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "complete": {
+            "type": "boolean"
+          },
+          "risk": {
+            "enum": [
+              "standard",
+              "high"
+            ]
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "role": {
+                  "enum": [
+                    "after",
+                    "before",
+                    "claim",
+                    "finding",
+                    "history",
+                    "implementation",
+                    "ownership",
+                    "plan",
+                    "requirement",
+                    "result",
+                    "rule",
+                    "test"
+                  ]
+                },
+                "kind": {
+                  "enum": [
+                    "primary",
+                    "summary"
+                  ]
+                }
+              },
+              "required": [
+                "path",
+                "sha256",
+                "start",
+                "end",
+                "role",
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 30
+          }
+        },
+        "required": [
+          "id",
+          "subject",
+          "complete",
+          "risk",
+          "sources"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 64
+    }
+  },
+  "required": [
+    "schema_version",
+    "stage",
+    "revision",
+    "expected_units",
+    "required_checks",
+    "checks",
+    "units"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -322,11 +322,30 @@ GET /api/v11/comments?topic=reviews/<REVIEW_ID>
 
 Filter to comments from the Greptile bot user that have not been marked as resolved/addressed.
 
+#### Jev audit hook, when enabled
+
+After fetching the current review, use the [shared Jev gate](../jev-gate/SKILL.md)
+for a scoped `review` audit of each finding and proposed fix. Supply primary
+finding, implementation, before/after, and cycle-history excerpts. For a first
+cycle, the history should explicitly state that there is no previous cycle.
+A repetition flag means investigate a stuck loop, not dismiss the finding.
+
+Verify bot identity and review-to-revision binding using platform metadata before
+asking Jev about meaning. A newer timestamp alone does not prove that an edited
+summary covers the current head. Missing or ambiguous revision provenance stays
+unknown. Fetch complete thread pagination and carry forward summary findings.
+Use the original polling and iteration limits; never add a second unbounded loop.
+
+Do not auto-resolve a comment because Jev calls it unsupported. A builder or human
+must verify the source and record the disposition. Rebuild the audit after a fix,
+new review, or rebase. The CLI binds Git revisions; Perforce remains advisory
+until it has a verified shelf-digest adapter. This hook adds no platform mutations.
+
 #### C. Check exit conditions
 
 Stop the loop if **any** of these are true:
 
-- Confidence score is **5/5** AND there are **zero unresolved comments**
+- Confidence score is **5/5** AND there are **zero unresolved comments**. If Jev enforcement is enabled, the applicable current-revision audits must also have live enforced passes. Shadow/replay results do not satisfy that added gate.
 - `--max-iterations` reached (report current state)
 
 #### D. Fix actionable comments
@@ -336,7 +355,7 @@ For each unresolved Greptile comment:
 1. Read the file and understand the comment in context.
 2. Determine if it's actionable (code change needed) or informational.
 3. If actionable, make the fix.
-4. If informational or a false positive, note it but still resolve the thread.
+4. If informational or a false positive, verify that disposition against the source, record the reason, and resolve the thread only after it is addressed. Jev alone cannot authorize dismissal.
 
 #### E. Resolve threads
 

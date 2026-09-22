@@ -5,6 +5,33 @@ A collection of [agent skills](https://code.claude.com/docs/en/skills) for Claud
 [![skills.sh](https://skills.sh/b/michaelshimeles/skills)](https://skills.sh/michaelshimeles/skills)
 
 
+## Jev judgment integration
+
+[jev-gate](jev-gate/SKILL.md) adds scoped TypeSafe Jev audits to the existing
+workflow. It includes 25 atomic questions, strict context manifests, bounded API
+calls, typed decision reports, and offline tests. Worktrees, service-layer design,
+recorded evidence, before/after proof, and Greptile remain in place.
+
+Read the [repo audit](docs/jev-audit.md) for every candidate insertion point and
+what was deliberately left alone. The [question map](jev-gate/references/question-map.md)
+and [operation guide](jev-gate/references/operation.md) cover setup and adoption.
+The default is shadow mode; live calls require a TypeSafe key and a reviewed plan.
+There is no automatic merge, push, upload, or review-thread resolution.
+
+TypeSafe documents a 64k-token request limit and a separate 32k-token
+state-plus-longest-question limit. This implementation pins `jev-1.13.0` and
+uses conservative byte caps, not a purported exact tokenizer. See
+[verified capabilities](jev-gate/references/capabilities.md) and
+[context controls](jev-gate/references/context.md).
+
+Run the offline integration checks after installing `jev-gate/requirements.txt`
+and pytest in a virtual environment:
+
+```bash
+python -m pytest tests/test_jev_gate.py -q
+python jev-gate/examples/demo.py --out .artifacts/jev-demo
+```
+
 ## Available skills
 
 ### [before-and-after](before-and-after/SKILL.md)
@@ -77,7 +104,7 @@ Use it when:
 - Writing anything a person will read: commit messages, PR titles and bodies, docs, README edits, code comments, chat replies
 - Cleaning up existing text that reads machine-made
 
-> Vendored from [cursor/plugins (pstack)](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop) (MIT, license included in the folder). The body matches upstream; the frontmatter has two edits so agents apply the skill on their own instead of waiting for a typed `/unslop`. We dropped the `disable-model-invocation: true` line, and the description now names the trigger (text you write or edit for a human reader) in place of upstream's "any writing. Must always apply.", so auto-invocation matches the scope `AGENTS.md` gives it. Restore the flag if you want slash-command-only behavior.
+> Vendored from [cursor/plugins (pstack)](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop) (MIT, license included in the folder). The original body is retained, with a local optional Jev fidelity-audit section appended; the frontmatter has two edits so agents apply the skill on their own instead of waiting for a typed `/unslop`. We dropped the `disable-model-invocation: true` line, and the description now names the trigger (text you write or edit for a human reader) in place of upstream's "any writing. Must always apply.", so auto-invocation matches the scope `AGENTS.md` gives it. Restore the flag if you want slash-command-only behavior.
 
 ## Workflow
 
@@ -85,7 +112,9 @@ Use it when:
 
 ## Installation
 
-Use `npx skills` to install skills to most coding agents:
+For this local Jev addition, copy the complete `jev-gate/` folder alongside the other skills in your agent's project skill directory. Its scripts and schemas must stay together. The upstream install command below installs upstream contents, not this unpushed local branch.
+
+Use `npx skills` to install the upstream skills to most coding agents:
 
 ```bash
 npx skills add michaelshimeles/skills

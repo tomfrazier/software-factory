@@ -1,0 +1,226 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "catalog_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "mode": {
+      "enum": [
+        "shadow",
+        "enforce",
+        "replay"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "revision": {
+      "type": "object",
+      "properties": {
+        "head": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40,64}$"
+        },
+        "diff_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "head",
+        "diff_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "review",
+        "blocked",
+        "error"
+      ]
+    },
+    "workflow_action": {
+      "enum": [
+        "continue",
+        "observe",
+        "stop"
+      ]
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "pass",
+              "review",
+              "blocked",
+              "error"
+            ]
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "question": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "pass",
+                    "review",
+                    "blocked",
+                    "error",
+                    "diagnostic"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "question",
+                "status",
+                "reason"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "unit_id",
+          "status",
+          "details"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 1000
+    },
+    "calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "request_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "budget": {
+            "type": "object",
+            "properties": {
+              "state_plus_longest_question_bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 16000
+              },
+              "request_bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 32000
+              },
+              "token_count": {
+                "type": "null"
+              },
+              "method": {
+                "const": "ascii-json-byte-cap-not-a-tokenizer"
+              }
+            },
+            "required": [
+              "state_plus_longest_question_bytes",
+              "request_bytes",
+              "token_count",
+              "method"
+            ],
+            "additionalProperties": false
+          },
+          "response": {
+            "type": "object",
+            "required": [
+              "model",
+              "answers",
+              "usage"
+            ]
+          }
+        },
+        "required": [
+          "unit_id",
+          "request_sha256",
+          "budget",
+          "response"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 1000
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    }
+  },
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "policy_version",
+    "model",
+    "mode",
+    "created_at",
+    "revision",
+    "plan_sha256",
+    "manifest_sha256",
+    "status",
+    "workflow_action",
+    "units",
+    "calls"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

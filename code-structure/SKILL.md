@@ -114,3 +114,13 @@ New feature? → Write in action first → See repeated ops? → Extract to serv
 ```
 
 Your architecture in one sentence: **Actions orchestrate domain rules, while the service layer centralizes reusable operational mechanics with a composable, explicit-input API.**
+
+## Optional Jev architecture audit
+
+For a proposed shared-service extraction, use an enabled
+[jev-gate](../jev-gate/SKILL.md) architecture audit on the relevant callers,
+service contract, plan, and rule excerpts. It checks policy placement, explicit
+inputs/failures, and whether shared use justifies extraction. Apply this phase
+only to shared-service proposals. Keep type checks, import rules, authorization,
+and test execution deterministic. Complex architectural tradeoffs still need a
+reasoning review; a typed answer does not design the replacement.

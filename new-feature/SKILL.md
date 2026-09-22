@@ -71,3 +71,12 @@ worktree or branch.
 
   `-D` is expected: after a squash- or rebase-merge, `-d` refuses even
   though the work is merged.
+
+## Optional Jev scope audit
+
+After the deterministic scope check, an enabled `/jev-gate` intake audit can
+compare one planned outcome with the request and the known ownership plans.
+Supply concise excerpts with the `requirement`, `plan`, and `ownership` roles.
+Exact changed-file overlap, dirty checkouts, branch identity, ports, and database
+ownership still require direct checks. A model judgment cannot waive a conflict.
+Use the [shared gate](../jev-gate/SKILL.md); do not send a full repo inventory.
