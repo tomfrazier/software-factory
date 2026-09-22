@@ -189,3 +189,10 @@ See [validation record](jev-validation.md) for commands, counts, baseline failur
 offline demonstration outcomes, and the live-call limitation. No evidence was
 published externally. The included synthetic responses test the adapter and policy;
 they are explicitly labeled and must not be represented as live Jev judgments.
+
+## Benchmark and Supercov follow-up
+
+The [benchmark calibration and Supercov review](jev-benchmarks-supercov-review.md)
+records the 2026-09-22 source comparison, missing coverage and assertion-map
+adapters, and a proposed independent calibration corpus. This follow-up is a
+review and design; it does not enable Supercov or change runtime thresholds.
