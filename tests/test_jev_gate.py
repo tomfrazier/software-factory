@@ -95,7 +95,7 @@ def test_invalid_or_incomplete_manifest_cannot_pass(case, mutation):
     with pytest.raises(service.GateError): service.pack(root, m)
 
 
-@pytest.mark.parametrize("name", ["../notes.txt", "/etc/passwd", ".env", "private.pem", ".git/config", "node_modules/foo"])
+@pytest.mark.parametrize("name", ["../notes.txt", "/etc/passwd", ".env", "private.pem", ".git/config", "node_modules/foo", ".secrets/typesafe-api-key"])
 def test_excluded_paths(case, name):
     root, _ = case
     with pytest.raises(service.GateError): service.local_path(root, name)

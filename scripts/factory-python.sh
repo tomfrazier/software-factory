@@ -2,6 +2,14 @@
 # Stable process PATH for SSH and other noninteractive launchers.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# Read a literal key; never source or execute a secrets file.
+KEY_FILE="$ROOT/.secrets/typesafe-api-key"
+if [ -z "${TYPESAFE_API_KEY:-}" ] && [ -f "$KEY_FILE" ]; then
+  if [ -L "$KEY_FILE" ]; then echo "Secret file must not be a symlink." >&2; exit 2; fi
+  IFS= read -r TYPESAFE_API_KEY < "$KEY_FILE" || true
+  TYPESAFE_API_KEY="${TYPESAFE_API_KEY%$'\r'}"
+  export TYPESAFE_API_KEY
+fi
 BREW_BIN="$(command -v brew || true)"
 if [ -z "$BREW_BIN" ]; then
   for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew; do

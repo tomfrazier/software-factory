@@ -157,3 +157,16 @@ Before calling the Mini ready, complete these actual checks:
 
 The laptop verification is preparation for this installation. It is not evidence
 that the other Mac's permissions, credentials, browser, or remote execution work.
+
+## Local Jev key file
+
+For launcher-based runs, save only the raw key on one line in
+`.secrets/typesafe-api-key` inside this factory checkout. Do not add quotes,
+`export`, or `TYPESAFE_API_KEY=`. Create the directory with mode 700 and the file
+with mode 600. The launcher reads it literally; it does not execute its contents.
+An existing non-empty TYPESAFE_API_KEY environment value takes precedence.
+
+`.secrets/`, `.env`, and `.env.*` are ignored by Git, and the Jev context packager
+rejects `.secrets` sources. Verify with `git check-ignore .secrets/typesafe-api-key`.
+Create this file separately on the Mini; Git bundles do not transfer it. Direct
+Python commands bypass the launcher and still require an environment variable.

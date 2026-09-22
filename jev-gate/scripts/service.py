@@ -88,7 +88,7 @@ def local_path(root, name):
     path = Path(name)
     if path.is_absolute() or ".." in path.parts or not path.parts:
         raise GateError("source path must stay within the repository")
-    if any(p.lower() in (".git", ".ssh", "node_modules", ".venv") or p.lower().startswith(".env") for p in path.parts):
+    if any(p.lower() in (".git", ".ssh", ".secrets", "node_modules", ".venv") or p.lower().startswith(".env") for p in path.parts):
         raise GateError("excluded source path")
     if path.suffix.lower() in (".pem", ".key", ".p12", ".pfx", ".png", ".jpg", ".jpeg", ".mp4", ".pdf", ".zip"):
         raise GateError("excluded binary or credential source")

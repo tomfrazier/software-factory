@@ -6,3 +6,8 @@ __pycache__/
 
 .worktrees/
 .venv/
+
+# Local credentials, never versioned
+.secrets/
+.env
+.env.*
