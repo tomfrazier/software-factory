@@ -112,6 +112,10 @@ Use it when:
 
 ## Installation
 
+For a separate execution Mac, use the [Mac Mini setup guide](docs/mac-mini-setup.md).
+It includes explicit dependency installation, a read-only host doctor, a synthetic
+FFmpeg smoke test, and checks for remote execution and per-host credentials.
+
 For this local Jev addition, copy the complete `jev-gate/` folder alongside the other skills in your agent's project skill directory. Its scripts and schemas must stay together. The upstream install command below installs upstream contents, not this unpushed local branch.
 
 Use `npx skills` to install the upstream skills to most coding agents:

@@ -78,3 +78,17 @@ A maintainer still needs to supply a key, run a small approved plan against the
 pinned model, and calibrate the questions on human-reviewed examples before
 choosing enforcement. Shadow mode is the default. Hosted Greptile review was not
 run because this was local-only work with no PR or push.
+
+## Mac Mini portability follow-up
+
+The execution-host setup adds seven host-doctor and synthetic-video tests.
+All 77 targeted tests pass, including the original 70 Jev tests. Both shell
+launchers pass Bash syntax validation. The read-only desktop doctor detects this
+laptop's missing ASS filter and missing before/after browser tools. The synthetic
+video smoke correctly fails against that insufficient FFmpeg build. No system
+packages or browser tools were installed on the laptop by the setup scripts.
+
+The separate Mini has not been connected or validated. A successful real video
+smoke on a compatible FFmpeg build, GUI permissions, browser launch, agent login,
+and live Jev call remain host acceptance checks. The setup guide lists them
+explicitly; dependency detection never labels the host ready for unattended work.

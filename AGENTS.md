@@ -130,3 +130,9 @@ infrastructure (stubs, fixtures), and anything that can't be tested locally.
 | `greploop` | this repo, vendored from [greptileai/skills](https://github.com/greptileai/skills) |
 | `greploop-apps` | this repo (local variant of greploop for huge PRs; no separate upstream) |
 | `unslop` | this repo, vendored from [cursor/plugins (pstack)](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop); frontmatter edited so agents apply it unprompted (`disable-model-invocation` dropped, description scoped to text the agent writes or edits for people), original body retained with a local optional Jev fidelity-audit section |
+
+## Execution host setup
+
+For a dedicated Mac execution host, follow [the setup guide](docs/mac-mini-setup.md).
+Run `scripts/factory_doctor.py` on the machine and under the account that will
+execute work. Keep host checks separate from proof that application tests passed.
