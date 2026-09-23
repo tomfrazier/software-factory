@@ -1,5 +1,5 @@
 """Versioned, atomic questions. Conditions and routing policy stay outside transport."""
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 MODEL = "jev-1.13.0"
 CRITERIA = {
     "adequate": "The supplied primary evidence directly supports the stated condition.",
@@ -8,6 +8,9 @@ CRITERIA = {
 }
 # Each row: stable ID, phase, required source roles, one condition, policy.
 ROWS = [
+    ("test_weakened", "change-risk", ["before", "after"], "The change removes an assertion, skips a previously exercised case, or accepts a wider set of results in an existing test. Judge the change, not whether the remaining tests pass.", "risk"),
+    ("injection_introduced", "change-risk", ["before", "after"], "The change introduces an untrusted value into an executable query or command through string construction without an appropriate parameter boundary. If the source of the value is absent, do not assume it is trusted.", "risk"),
+    ("credential_embedded", "change-risk", ["before", "after"], "The change embeds an authentication credential as a source literal instead of obtaining it from runtime configuration. Clearly marked nonfunctional fixture placeholders are not credentials.", "risk"),
     ("context_sufficient", "all", [], "The primary excerpts in `sources` contain the facts needed to judge `subject` without guessing about omitted code or events.", "support"),
     ("acceptance_clear", "intake", ["requirement"], "The acceptance condition for `subject` states an observable outcome.", "support"),
     ("scope_faithful", "intake", ["requirement", "plan"], "The planned work for `subject` stays within the supplied user request.", "support"),

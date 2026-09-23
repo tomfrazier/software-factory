@@ -35,6 +35,7 @@ mode; adopt enforcement only after the project calibrates the question set.
 |---|---|---|
 | Scope check, before implementation | `intake` | Worktree creation, branch identity, exact overlap checks |
 | Shared-service extraction review | `architecture` | Type checks, dependency rules, auth enforcement |
+| After changing code or tests | `change-risk`, advisory | Test execution, static security checks |
 | Before running planned tests | `test-plan` | Test execution and measured coverage |
 | After collecting before/after proof | `evidence` | Actual media inspection and runtime verification |
 | Greptile finding/fix review | `review` | Reviewer identity, review freshness, thread resolution |
@@ -136,3 +137,7 @@ infrastructure (stubs, fixtures), and anything that can't be tested locally.
 For a dedicated Mac execution host, follow [the setup guide](docs/mac-mini-setup.md).
 Run `scripts/factory_doctor.py` on the machine and under the account that will
 execute work. Keep host checks separate from proof that application tests passed.
+
+Optional Supercov evidence collection is described in
+[the integration guide](docs/supercov-integration.md). It preserves the test result
+and reports measurement limits; coverage does not replace correctness evidence.

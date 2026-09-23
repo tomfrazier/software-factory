@@ -2,7 +2,7 @@
 name: jev-gate
 description: Audit software-factory checkpoints with TypeSafe Jev using scoped text evidence, typed questions, and explicit uncertainty. Use for task scope, shared-service changes, test plans, evidence claims, review fixes, release claims, prose fidelity, or risk triage when the project enables Jev.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Jev judgment audit
@@ -16,7 +16,7 @@ requirements. A Jev result applies only to the listed units and evidence.
 ## Select a checkpoint
 
 Use `intake`, `architecture`, `test-plan`, `evidence`, `review`, `ship`, `prose`,
-or `risk`. Each evaluates three atomic conditions plus a context-sufficiency
+`risk`, or `change-risk`. Each evaluates three atomic conditions plus a context-sufficiency
 question. Read the [question map](references/question-map.md) to select a suitable
 unit. Do not apply a shared-service extraction question to an unrelated change.
 When a required condition cannot be evidenced, request more evidence or a human
@@ -66,3 +66,8 @@ change a database, or bypass a failed test.
 For uncertain results, allow at most one evidence expansion per unit. If the
 judgment stays uncertain, route to a person or a reasoning model. Do not repeat
 identical requests until one passes. Any changed evidence requires new hashes.
+
+The `change-risk` stage checks weakened tests, injection, and embedded credentials.
+It is uncalibrated and always requires at least review, even in enforce mode.
+Use the [Supercov guide](../docs/supercov-integration.md) for optional measured
+evidence and matched calibration examples.

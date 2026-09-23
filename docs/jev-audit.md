@@ -11,7 +11,7 @@ Branch: `agent/jev-audit-0922`. No upstream push, PR, merge, or hosted review wa
 ## Result
 
 Jev now has a runnable, optional audit layer with 25 versioned questions across
-eight checkpoints. The implementation includes context manifests, source hashes
+nine checkpoints. The implementation includes context manifests, source hashes
 and line ranges, explicit coverage inventories, request and decision schemas,
 conservative input budgets, TypeSafe HTTP transport, fail-closed validation,
 threshold routing, and a reproducible offline demo. All seven existing skills
@@ -196,3 +196,11 @@ The [benchmark calibration and Supercov review](jev-benchmarks-supercov-review.m
 records the 2026-09-22 source comparison, missing coverage and assertion-map
 adapters, and a proposed independent calibration corpus. This follow-up is a
 review and design; it does not enable Supercov or change runtime thresholds.
+
+## Supercov implementation follow-up, 2026-09-23
+
+The [optional adapter and calibration guide](supercov-integration.md) supersedes
+the previous follow-up's not-implemented status for evidence collection and three
+change-risk questions. It records real Supercov smoke results and six live
+synthetic Jev observations. Broader held-out calibration, automated assertion
+flow authoring, parser-assisted context selection, and caching remain deferred.

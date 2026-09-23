@@ -13,7 +13,8 @@
         "review",
         "risk",
         "ship",
-        "test-plan"
+        "test-plan",
+        "change-risk"
       ]
     },
     "revision": {

@@ -92,3 +92,18 @@ The separate Mini has not been connected or validated. A successful real video
 smoke on a compatible FFmpeg build, GUI permissions, browser launch, agent login,
 and live Jev call remain host acceptance checks. The setup guide lists them
 explicitly; dependency detection never labels the host ready for unattended work.
+
+## Optional Supercov integration, 2026-09-23
+
+Supercov 1.2.0 ran Node tests on the laptop through the adapter. Branch coverage
+rose from 50% to 100%; a deliberate failed assertion stayed failed at 100%.
+Private evidence is in `.artifacts/supercov-acceptance-001/.artifacts/`.
+Six synthetic live Jev requests completed with adverse-condition outputs
+0.95/0.04, 0.98/0.04, and 0.94/0.05 for the matched pairs. Plans and responses
+are in `.artifacts/calibration-v1/`; no real application source was transmitted.
+The new stage cannot grant an enforced pass. This is development evidence, not
+held-out calibration. See the integration guide for reproduction commands.
+
+The focused gate, adapter, host-doctor, and launcher regression suite passed
+98 tests. `git diff --check` passed. The original recorder suite was not rerun
+for this change; its previously documented macOS failures remain unresolved.

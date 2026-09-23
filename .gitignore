@@ -11,3 +11,7 @@ __pycache__/
 .secrets/
 .env
 .env.*
+
+# Optional local coverage collector and its isolated workspaces
+.supercov/
+.tools/

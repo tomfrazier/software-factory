@@ -8,7 +8,7 @@ A collection of [agent skills](https://code.claude.com/docs/en/skills) for Claud
 ## Jev judgment integration
 
 [jev-gate](jev-gate/SKILL.md) adds scoped TypeSafe Jev audits to the existing
-workflow. It includes 25 atomic questions, strict context manifests, bounded API
+workflow. It includes 28 atomic questions, strict context manifests, bounded API
 calls, typed decision reports, and offline tests. Worktrees, service-layer design,
 recorded evidence, before/after proof, and Greptile remain in place.
 
@@ -131,3 +131,9 @@ Claude Code picks up the skill automatically and invokes it when a task matches 
 1. Create a folder named after the skill (kebab-case).
 2. Add a `SKILL.md` with `name` and `description` frontmatter. The description is what Claude uses to decide when the skill applies, so make it trigger-focused ("Use when...").
 3. Keep instructions concise and actionable; link out to reference files in the folder if they get long.
+
+### Optional measured coverage
+
+[Supercov integration](docs/supercov-integration.md) adds a pinned local coverage
+collector, a reproducible smoke test, and advisory change-risk judgments. Coverage
+and assertion evidence remain separate from correctness and release decisions.

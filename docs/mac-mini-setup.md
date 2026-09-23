@@ -170,3 +170,9 @@ An existing non-empty TYPESAFE_API_KEY environment value takes precedence.
 rejects `.secrets` sources. Verify with `git check-ignore .secrets/typesafe-api-key`.
 Create this file separately on the Mini; Git bundles do not transfer it. Direct
 Python commands bypass the launcher and still require an environment variable.
+
+## Optional Supercov measurement
+
+Follow [the Supercov integration guide](supercov-integration.md) to install the
+pinned local tool and run its smoke test on the Mini. This is separate from the
+base setup and does not require a TypeSafe key.

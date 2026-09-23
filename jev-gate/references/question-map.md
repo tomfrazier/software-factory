@@ -1,7 +1,7 @@
 # Question map
 
 The executable source is `scripts/catalog.py`. `questions.json` is its inspectable
-snapshot; tests keep them aligned. Version 1.0.0 has 25 questions across eight
+snapshot; tests keep them aligned. Version 1.1.0 has 28 questions across nine
 checkpoints. Every unit also receives `context_sufficient` as a Choice question.
 
 | Checkpoint and unit | Choice conditions | Noul risk flags | Score | Primary source roles |
@@ -39,3 +39,12 @@ excerpts. It is not automatically dismissed. Likewise, repetition signals a stuc
 loop; it does not prove the finding is false. Every condition is independently
 judged, then the local policy combines the outcomes. No question depends on a
 sibling answer hidden in the same request.
+
+## Change-risk additions in catalog 1.1.0
+
+Each unit needs primary `before` and `after` excerpts. `test_weakened` checks
+removed or loosened assertions; `injection_introduced` checks unsafe query or
+command construction; `credential_embedded` checks literal authentication
+credentials. These Noul questions are paired with context sufficiency and always
+require at least review pending independent calibration. Redact real credentials
+locally before any request; missing necessary provenance means incomplete context.

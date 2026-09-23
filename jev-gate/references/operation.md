@@ -55,7 +55,7 @@ project. GitLab and Perforce skill hooks use the same semantic questions, but th
 runner's revision binding currently supports Git only; Perforce must use manual
 advisory evaluation until a shelf-digest adapter is implemented.
 
-## Policy version 1.0.0
+## Policy version 1.1.0
 
 | Signal | Pass | Block | Review |
 |---|---|---|---|
@@ -103,3 +103,8 @@ when auditability is required. These are local private files, created with mode
 0600 on POSIX; `.artifacts/` is ignored by Git. The runner does not upload reports,
 edit PRs, resolve comments, execute model-selected commands, or modify code.
 Choose retention and redaction according to the adopting project's data policy.
+
+Catalog 1.1.0 adds `change-risk`. Its three adverse conditions use the existing
+thresholds, but the stage always requires review or blocks; it cannot grant an
+enforced pass. Six synthetic development calls are compatibility evidence only.
+See [Supercov integration](../../docs/supercov-integration.md).

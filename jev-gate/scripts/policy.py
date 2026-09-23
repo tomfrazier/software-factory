@@ -1,7 +1,7 @@
 """Local routing policy; model output never executes an action."""
 from catalog import CATALOG
 
-POLICY_VERSION = "1.0.0"
+POLICY_VERSION = "1.1.0"
 # Initial conservative thresholds, not a claim of domain calibration.
 SUPPORT_PROBABILITY = 0.95
 SUPPORT_CONFIDENCE = 0.90
@@ -29,6 +29,8 @@ def evaluate(unit, answers):
             confident = answer["confidence"] >= SUPPORT_CONFIDENCE and answer["probabilities"][choice] >= SUPPORT_PROBABILITY
             status = "pass" if confident and choice == "adequate" else "blocked" if confident and choice == "inadequate" else "review"
         details.append({"question": key, "status": status, "reason": "threshold_policy"})
+    if any(CATALOG[key]["stage"] == "change-risk" for key in answers):
+        details.append({"question": None, "status": "review", "reason": "uncalibrated_change_risk"})
     if not unit["complete"]:
         details.append({"question": None, "status": "review", "reason": "coverage_incomplete"})
     if unit["risk"] == "high":
