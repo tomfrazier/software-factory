@@ -5,24 +5,29 @@ description: Cut AI tells from text you write or edit for a human reader (commit
 
 # Unslop
 
-Edit text to remove AI patterns and add human voice.
+Edit for clarity, specificity, and the intended voice. Pattern matches are prompts
+for an editorial decision, not proof of authorship. Preserve quotations, code,
+identifiers, measurements, and necessary technical terms. User and project style
+requirements take precedence over these defaults.
 
 ## Process
 
-1. Scan for the patterns below.
-2. Rewrite. Preserve meaning, match intended tone.
-3. Add soul (see next section).
-4. Self-audit: "What makes this obviously AI generated?" Fix remaining tells.
+1. Establish the audience and requested voice; scan the patterns below in context.
+2. Edit only where the change improves clarity or removes an unsupported claim.
+3. Preserve facts, scope, uncertainty, and qualifications. Never invent a measurement to replace a vague adjective.
+4. Read the passage as a whole for repetitive framing and rhythm. Keep a clear original unchanged.
+5. Compare before and after for changed meaning, then return the edited text in the requested format.
 
 ## Adding soul
 
-Removing patterns is half the job. Sterile, voiceless writing is just as obvious.
+Keep the author's voice where it serves the reader. Do not invent personal
+experiences, opinions, quotations, or enthusiasm to make text sound human.
 
-- **Have opinions.** React to facts instead of neutrally listing pros and cons.
+- **Have a point.** Preserve the author's supported judgment; keep neutral reporting neutral.
 - **Vary rhythm.** Short sentences. Then longer ones that take their time. Mix it up.
 - **Acknowledge complexity.** "Impressive but also kind of unsettling" beats "impressive."
 - **Use "I" when it fits.** First person isn't unprofessional.
-- **Let some mess in.** Perfect structure looks machine-made.
+- **Keep useful structure.** Do not add errors, forced informality, or punctuation for effect.
 - **Be specific.** Not "this is concerning" but "there's something unsettling about agents churning away at 3am."
 
 ## Patterns to detect and fix
@@ -40,14 +45,14 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 7. **AI vocabulary.** Additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape (abstract), pivotal, showcase, tapestry (abstract), testament, underscore, vibrant. Replace with plain words.
 8. **Fancy ways to say "is".** "serves as", "stands as", "boasts", "features". Just say "is" or "has".
-9. **"Not just X, but Y."** State the point directly instead.
+9. **Decorative contrast.** Check repeated negation and less/more comparisons. Lead with the actual behavior; retain a contrast when it resolves a real misconception or defines a boundary.
 10. **Rule of three.** Forcing ideas into groups of three. Use the natural number.
 11. **Synonym cycling.** Protagonist, main character, central figure, hero all in one paragraph. Pick one, repeat it.
 12. **False ranges.** "from X to Y" where X and Y aren't on a meaningful scale. List topics directly.
 
 ### Style
 
-13. **Em dash overuse.** Avoid em dashes entirely. Use periods or commas only (no parentheses, no en dashes, no hyphen-as-dash substitutes). Em dashes are an AI tell, and reaching for parentheses instead just trades one tell for another. If a thought needs separation, end the sentence or use a comma.
+13. **Punctuation habits.** Use punctuation for readability. Follow an explicit no-em-dash house style when supplied; otherwise edit distracting repetition, not individual marks. Parentheses can carry a useful aside. Do not alter punctuation inside quotes, code, or identifiers.
 14. **Colon overuse.** Colons are fine before a list or example. Not as mid-sentence connectors. "If you're coming from traditional automation: instead of registering event handlers, you describe conditions" adds nothing with the colon. Rewrite to let the point stand on its own without comparison framing. "Describing when the scheduler should fire works best as plain English." Same meaning, no crutch punctuation.
 15. **Boldface overuse.** Don't bold every proper noun or acronym.
 16. **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved...". Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail ("**Schema in TypeScript.** Tables live in one file.") is fine, not a tell.
@@ -64,7 +69,7 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 ### Filler
 
 23. **Filler phrases.** "In order to" becomes "To". "Due to the fact that" becomes "Because". "It is important to note that" gets deleted.
-24. **Excessive hedging.** "could potentially possibly be argued that it might" becomes "may".
+24. **Excessive hedging.** "could potentially possibly be argued that it might" becomes "may". Preserve uncertainty that the evidence requires; do not turn an estimate or possibility into a guarantee.
 25. **Generic conclusions.** "The future looks bright." State specific plans or facts.
 
 ### Jargon
@@ -79,6 +84,16 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 30. **Cut adverbs, or use a stronger verb.** "runs quickly" becomes "is fast" or the number. "significantly improves" becomes the measured delta. An adverb propping up a weak verb means the verb is wrong.
 31. **Prefer the plain word.** "utilize" becomes "use", "leverage" becomes "use", "facilitate" becomes "help", "numerous" becomes "many", "in the event that" becomes "if". The fancier synonym is rarely clearer.
 
+## Additional passage-level checks
+
+32. **Cost-free promises.** When a benefit supposedly has no downside, verify the tradeoff or qualify the claim.
+33. **Empty evaluations.** Replace unsupported praise or intensifiers with an observed property; remove the appraisal when evidence is unavailable.
+34. **Announced importance.** Give the consequence instead of telling readers to regard the point as important.
+35. **Mechanical transitions.** Remove repeated connective scaffolding when the argument already supplies the connection.
+
+For the comparison, research limits, and original editing examples, read
+[the research notes](references/ai-tells.md) when extending or reviewing this skill.
+
 ## Optional fidelity audit after editing
 
 When the project enables [jev-gate](../jev-gate/SKILL.md), use its prose phase on
@@ -86,3 +101,6 @@ one before/after passage and the relevant writing rule. It checks preserved
 meaning, claim inflation, and clarity. Keep rewrites in this skill. A failed or
 uncertain fidelity judgment calls for a source check or another edit; it is not
 permission for Jev to generate replacement prose.
+
+Use Jev for fidelity to supplied evidence and rules, never for an AI-authorship
+score or a count of prohibited words. No live call is required for ordinary editing.
