@@ -291,3 +291,21 @@ swap the recorder for scripted capture:
   replaces them.
 - Hand before/after media pairs to a before/after tool for the PR embed
   (e.g. `before-and-after before.png after.png --markdown`).
+
+## Optional Jev test and evidence audits
+
+An enabled [jev-gate](../jev-gate/SKILL.md) `test-plan` audit checks whether one
+planned case observes its requirement and specified failure condition. Its impact
+Score helps prioritize review and never grants permission to skip tests.
+
+After capture, the `evidence` phase compares primary text observations, acceptance
+conditions, before/after records, and the proposed claim. Preserve failed and
+untested cases as facts. Confirm finalization, revision, process ownership, and
+artifact integrity with code before preparing the manifest. Never pass the entire
+recorder manifest blindly; it can include commands, absolute paths, and unrelated
+session data. Select only the required excerpts.
+
+Jev is text-only. Keep the existing frame review and video checks; do not send
+images, video, base64 media, or a URL and claim Jev inspected the recording.
+Record unavailable visual verification as unknown. Jev cannot turn an assertion
+annotation into proof that the described interaction occurred.

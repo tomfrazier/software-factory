@@ -1,0 +1,156 @@
+{
+  "baseline": "4b72f46b045e6fef52e6a98d4c162dd309826aed",
+  "tracked_file_count": 25,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 60,
+      "lines": 5,
+      "sha256": "e9858413397f40f842ec4949950d10247d360ae5633729b1106ffb08bef5fd9d"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 5191,
+      "lines": 98,
+      "sha256": "c2668ca6bc3ddc7916a696cd14eb31ecceca27ae8f940caee4b21f00df268dde"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7329,
+      "lines": 100,
+      "sha256": "488a770438ffacf5a298a10394f91269853f3bf6b89b6a242be2b7e5284b9b71"
+    },
+    {
+      "path": "before-and-after/LICENSE",
+      "bytes": 1231,
+      "lines": 27,
+      "sha256": "e328fb0674dec4c1640fa17dbdb6834324dd53ec9ea43439e13e01e8b2598847"
+    },
+    {
+      "path": "before-and-after/SKILL.md",
+      "bytes": 4049,
+      "lines": 124,
+      "sha256": "41d60332de835850db0834070d0bfe939778b1f3aa273e708581dcd60394b8ee"
+    },
+    {
+      "path": "before-and-after/scripts/adapters/0x0st.sh",
+      "bytes": 728,
+      "lines": 36,
+      "sha256": "41f7332528c8bed5aef244a852343e4ad74dba29438044e2a3cf0aaa00729a2b"
+    },
+    {
+      "path": "before-and-after/scripts/adapters/blob.sh",
+      "bytes": 1336,
+      "lines": 55,
+      "sha256": "2f1eb23d5ceefb12a997d68ccdb04ffa0deff77f31187cf3af5442caf91eb815"
+    },
+    {
+      "path": "before-and-after/scripts/adapters/gist.sh",
+      "bytes": 1378,
+      "lines": 59,
+      "sha256": "3b595606b308c625adbd16b95e72fd1999a1c2d42ad8e00fc7270bc5600bc374"
+    },
+    {
+      "path": "before-and-after/scripts/capture.sh",
+      "bytes": 1528,
+      "lines": 64,
+      "sha256": "d13c99cf25adfb6f761b8f8b994e3298a893a783e027d042bad724b01949cbf7"
+    },
+    {
+      "path": "before-and-after/scripts/upload-and-copy.sh",
+      "bytes": 3528,
+      "lines": 136,
+      "sha256": "e23be6b5b3ac2c6635f9cf702326382ac81b797e56687e3d473090567423e472"
+    },
+    {
+      "path": "code-structure/SKILL.md",
+      "bytes": 4586,
+      "lines": 116,
+      "sha256": "181ee2eab452ed87903b62709ea96ac65a674b5466823c1a107e9a19ebb0d0fa"
+    },
+    {
+      "path": "evidence-driven-testing/SKILL.md",
+      "bytes": 15587,
+      "lines": 293,
+      "sha256": "690ab930e34ecc16a499b090e93261ad66bd0ae7153c5d3354f15b29e2405ff5"
+    },
+    {
+      "path": "evidence-driven-testing/scripts/evidence.py",
+      "bytes": 56721,
+      "lines": 1344,
+      "sha256": "d246b499991d495bf2f972f852d2dae0851b5bff2b5a64347f610242808ae8eb"
+    },
+    {
+      "path": "greploop-apps/LICENSE",
+      "bytes": 1068,
+      "lines": 21,
+      "sha256": "b5005f09527f9533812a206cefe6ff5f71e5cdc0ae644750a3b1c71901c89ddd"
+    },
+    {
+      "path": "greploop-apps/SKILL.md",
+      "bytes": 14522,
+      "lines": 463,
+      "sha256": "5bf10a11d1d9a6d09cc4237959e654f1243319da92df2e47b44d1b5c8ffb2319"
+    },
+    {
+      "path": "greploop-apps/references/gitlab-api.md",
+      "bytes": 2750,
+      "lines": 93,
+      "sha256": "202c1b98745d42df914412fa16b4bfd942c5b298ec7a4302cf57696df90da7d1"
+    },
+    {
+      "path": "greploop-apps/references/graphql-queries.md",
+      "bytes": 1202,
+      "lines": 49,
+      "sha256": "99a689cf5318332316353a3fe2e68d5f6096f9c48b6428ca5ddf434ee5c75a42"
+    },
+    {
+      "path": "greploop/LICENSE",
+      "bytes": 1068,
+      "lines": 21,
+      "sha256": "b5005f09527f9533812a206cefe6ff5f71e5cdc0ae644750a3b1c71901c89ddd"
+    },
+    {
+      "path": "greploop/SKILL.md",
+      "bytes": 13479,
+      "lines": 455,
+      "sha256": "fdffa8b4caefd8d245a9b17163dd7c67327c8b84e93b4d73f44caff7e5ea1000"
+    },
+    {
+      "path": "greploop/references/gitlab-api.md",
+      "bytes": 2745,
+      "lines": 93,
+      "sha256": "56ed1f30b4a5fe8c3286503505de1d4f9704f361ed158c162a0027c6bbbd2c80"
+    },
+    {
+      "path": "greploop/references/graphql-queries.md",
+      "bytes": 1202,
+      "lines": 49,
+      "sha256": "99a689cf5318332316353a3fe2e68d5f6096f9c48b6428ca5ddf434ee5c75a42"
+    },
+    {
+      "path": "new-feature/SKILL.md",
+      "bytes": 2807,
+      "lines": 73,
+      "sha256": "8ec3b6ae1d9190458fe6503fe0ddc4af92277e19899176c85bbc5016e01f9c35"
+    },
+    {
+      "path": "tests/test_evidence.py",
+      "bytes": 35352,
+      "lines": 823,
+      "sha256": "a5e1e323124b4cb6a6e66e1cb6b9cd6c3a67e5bca2395e9552766dbc37a411e0"
+    },
+    {
+      "path": "unslop/LICENSE",
+      "bytes": 1067,
+      "lines": 21,
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "unslop/SKILL.md",
+      "bytes": 6758,
+      "lines": 80,
+      "sha256": "c861ee8c94debe24e28fe3f7d567883ed95ad9741fb8a4227fe217db8667fa78"
+    }
+  ]
+}

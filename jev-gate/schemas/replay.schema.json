@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "responses": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 64,
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  },
+  "required": [
+    "plan_sha256",
+    "responses"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

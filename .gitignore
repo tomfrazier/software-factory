@@ -3,3 +3,15 @@
 __pycache__/
 *.py[cod]
 .artifacts/
+
+.worktrees/
+.venv/
+
+# Local credentials, never versioned
+.secrets/
+.env
+.env.*
+
+# Optional local coverage collector and its isolated workspaces
+.supercov/
+.tools/
